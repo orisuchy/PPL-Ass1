@@ -10,7 +10,7 @@ export const partition = (pred: Pred, arr:any[]) => {
 
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 console.log(partition(x => x % 2 === 0, numbers));
-
+//hello
 //hello - ori
 /* Question 2 */
 export const mapMat = (f:any, matrix:any[][])=>{
