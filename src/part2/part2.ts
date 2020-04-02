@@ -1,5 +1,5 @@
 import R, { Pred } from "ramda";
-
+//////////////////////////////////////////Guy said in the PS she think we need to declare type for each ver
 /* Question 1 */
 //Need to change the 'any' to generic type <T>
 export const partition = (pred: Pred, arr:any[]) => {
