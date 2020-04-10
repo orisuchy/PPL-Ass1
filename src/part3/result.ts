@@ -1,15 +1,35 @@
 /* Question 3 */
 
-export type Result<T> = undefined;
+export type Result<T> = Ok<T> | Failure
 
-export const makeOk = undefined;
-export const makeFailure = undefined;
+interface Ok <T>{
+    tag: 'Ok';
+    value: T;
+}
 
-export const isOk = undefined;
-export const isFailure = undefined;
+interface Failure {
+    tag: 'Failure';
+    message: string;
+}
+
+
+
+export const makeOk = <T>(value: T): Ok<T> => ({ tag: "Ok", value: value});
+export const makeFailure = (message: string): Failure => ({ tag: "Failure", message: message});
+
+export const isOk = <T>(x:Result<T>): x is Ok<T> => x.tag === "Ok";
+export const isFailure = <T>(x:Result<T>): x is Failure => x.tag === "Failure";
 
 /* Question 4 */
-export const bind = undefined;
+export const bind = <T, U>(result: Result<T>, f: (x: T) => Result<U>): Result<U> => {
+    if (isOk(result)){
+        const newResult = f(result.value);
+        return newResult;
+    }
+    else (isFailure(result));{
+        return result;
+    }
+}
 
 /* Question 5 */
 interface User {
