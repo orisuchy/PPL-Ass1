@@ -17,5 +17,12 @@ export const isSome = <T>(x: Optional<T>): x is Some<T> => x.tag === "Some";
 export const isNone = <T>(x: Optional<T>): x is None => x.tag === "None";
 
 /* Question 2 */
-export const bind = undefined;
-
+export const bind = <T, U>(optional: Optional<T>, f: (x: T) => Optional<U>): Optional<U> => {
+    if (isSome(optional)){
+        const newOptional = f(optional.value);
+        return newOptional;
+    }
+    else (isNone(optional));{
+        return optional;
+    }
+}
