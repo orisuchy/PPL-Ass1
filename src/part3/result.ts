@@ -72,23 +72,4 @@ export const monadicValidateUser = (user: User): Result<User> => {
     const resultChecked = reduce(bind, validateName(user),[validateEmail, validateHandle]);
     return resultChecked;
 
-    //This is wonderfull
-    //arr.reduce((finalArr:Result<User>[],f) => finalArr.concat(f(user)),[]);
-
-    //const resultChecked = reduce(bind, ([validateName(user), validateEmail(user), validateHandle(user)],isFailure,[]));
-    //return resultChecked;
 }
-
-/*
-arr = [1,2,3]
-arr.reduce((acc, cur) => acc + cur, 0)
-
-a = [[1, 2, 3], [4, 5, 6]]
-a.reduce((acc, curr) => acc.concat(curr), [])
-
-//example 1
-const writer = bind(bind(makeWriter(5), square), half);
-//example 2
-const writer = makeWriter(5);
-const squareAndHalved = reduce(bind, writer, [square, half])
-*/
