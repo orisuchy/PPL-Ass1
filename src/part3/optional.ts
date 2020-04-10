@@ -11,7 +11,7 @@ export type Optional<T> = Some<T> | None;
 
 
 export const makeSome = <T>(value: T): Some<T> => ({ tag: "Some", value: value});
-export const makeNone = (() => ({ tag: "None"}));
+export const makeNone = (():None => ({tag: "None"}));
 
 export const isSome = <T>(x: Optional<T>): x is Some<T> => x.tag === "Some";
 export const isNone = <T>(x: Optional<T>): x is None => x.tag === "None";

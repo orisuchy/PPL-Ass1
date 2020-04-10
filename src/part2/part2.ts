@@ -8,11 +8,12 @@ export const partition = <T>(pred: Pred, arr:T[]) => {
     let arr3: Array<T>[] = [arr1,arr2];
     return arr3;
 }
-
+//test
+/*
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 console.log("partition test:")
 console.log(partition(x => x % 2 === 0, numbers));
-
+*/
 /* Question 2 */
 //No way without "any"!!!!
 export const mapMat = <T>(f:(x:T)=>any, matrix:T[][])=>{
@@ -20,7 +21,7 @@ export const mapMat = <T>(f:(x:T)=>any, matrix:T[][])=>{
 }
 
 ///test///
-console.log("\nmapMat test:")
+/*console.log("\nmapMat test:")
 const f = (x:number) => x+1;
 console.log(R.compose(f));
 const mat = [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]
@@ -34,6 +35,7 @@ export const composeMany : any = (arr:any[]) => {
 }
 
 ///test///
+/*
 console.log("\ncomposeMany test:")
 const squareAndHalf = composeMany([(x: number) => x / 2, (x: number) => x * x]);
 console.log(squareAndHalf(5)); // => 12.5
@@ -71,11 +73,13 @@ export const maxSpeed = (pokedex: Pokemon[])=>{
    return pokedex.filter(x=>x.base.Speed === max)[0].type;
 }
 ///test///
+/*
 let pokemon1 = {id:1, name: {english:"a",japanese:"a",chinese:"b",french:"a"},type:["Fire","b"],base:{HP:1,Attack:1,Defense:1,"Sp. Attack": 1,"Sp. Defense":1, Speed:1}}
 let pokemon2 = {id:1, name: {english:"abz",japanese:"a",chinese:"b",french:"a"},type:["a","Grass"],base:{HP:1,Attack:1,Defense:1,"Sp. Attack": 1,"Sp. Defense":1, Speed:2}}
 let pikachu = {id:1, name: {english:"abpikapika",japanese:"a",chinese:"b",french:"a"},type:["sexy","funny","Grass"],base:{HP:1,Attack:1,Defense:1,"Sp. Attack": 1,"Sp. Defense":1, Speed:3}}
 console.log("\nmaxSpeed test:")
 console.log(maxSpeed([pokemon1, pokemon2, pikachu]));
+*/
 
 
 export const grassTypes = (pokedex: Pokemon[])=>{
@@ -85,13 +89,17 @@ export const grassTypes = (pokedex: Pokemon[])=>{
     return names.sort();
 }
 ///test///
+/*
 console.log("\ngrassTypes test:")
 console.log(grassTypes([pokemon1, pokemon2, pikachu]));
+*/
 
 
 export const uniqueTypes = (pokedex: Pokemon[])=>{
     return R.chain(x => x.type, pokedex);
 }
 ///test///
+/*
 console.log("\nuniqueTypes test:")
 console.log(uniqueTypes([pokemon1, pokemon2, pikachu]));
+*/
