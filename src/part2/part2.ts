@@ -70,13 +70,15 @@ interface Pokemon {
 
 export const maxSpeed = (pokedex: Pokemon[])=>{
    let max = pokedex.reduce((acc,cur) => Math.max(acc,cur.base.Speed), 0);
-   return pokedex.filter(x=>x.base.Speed === max)[0].type;
+   return pokedex.filter(x=>x.base.Speed === max);
+   //return pokedex.filter(x=>x.base.Speed === max)[0].type;
 }
 ///test///
+
+let pokemon1 = {id:1, name: {english:"a",japanese:"a",chinese:"b",french:"a"},type:["Fire","B"],base:{HP:1,Attack:1,Defense:1,"Sp. Attack": 1,"Sp. Defense":1, Speed:1}}
+let pokemon2 = {id:1, name: {english:"abz",japanese:"a",chinese:"b",french:"a"},type:["A","Grass"],base:{HP:1,Attack:1,Defense:1,"Sp. Attack": 1,"Sp. Defense":1, Speed:2}}
+let pikachu = {id:1, name: {english:"abpikapika",japanese:"a",chinese:"b",french:"a"},type:["sexy","funny","Grass"],base:{HP:1,Attack:1,Defense:1,"Sp. Attack": 1,"Sp. Defense":1, Speed:2}}
 /*
-let pokemon1 = {id:1, name: {english:"a",japanese:"a",chinese:"b",french:"a"},type:["Fire","b"],base:{HP:1,Attack:1,Defense:1,"Sp. Attack": 1,"Sp. Defense":1, Speed:1}}
-let pokemon2 = {id:1, name: {english:"abz",japanese:"a",chinese:"b",french:"a"},type:["a","Grass"],base:{HP:1,Attack:1,Defense:1,"Sp. Attack": 1,"Sp. Defense":1, Speed:2}}
-let pikachu = {id:1, name: {english:"abpikapika",japanese:"a",chinese:"b",french:"a"},type:["sexy","funny","Grass"],base:{HP:1,Attack:1,Defense:1,"Sp. Attack": 1,"Sp. Defense":1, Speed:3}}
 console.log("\nmaxSpeed test:")
 console.log(maxSpeed([pokemon1, pokemon2, pikachu]));
 */
@@ -96,8 +98,14 @@ console.log(grassTypes([pokemon1, pokemon2, pikachu]));
 
 
 export const uniqueTypes = (pokedex: Pokemon[])=>{
-    return R.chain(x => x.type, pokedex);
+    let allTypes = R.chain(x => x.type, pokedex);
+    let filteredTypes =  allTypes.reduce((acc:string[],curr:string) => 
+        acc.includes(curr)? acc.concat() : acc.concat(curr) 
+    , []);  
+    return filteredTypes.sort();
 }
+
+
 ///test///
 /*
 console.log("\nuniqueTypes test:")
