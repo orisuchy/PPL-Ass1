@@ -1,8 +1,6 @@
 import R, { Pred } from "ramda";
-import compose from "ramda";
-//////////////////////////////////////////Guy said in the PS she think we need to declare type for each ver
+
 /* Question 1 */
-//Need to change the 'any' to generic type <T>
 export const partition = <T>(pred: Pred, arr:T[]) => {
     let arr1 = arr.filter(pred,arr);
     let arr2 = R.without(arr1,arr);
@@ -12,7 +10,6 @@ export const partition = <T>(pred: Pred, arr:T[]) => {
 
 
 /* Question 2 */
-//No way without "any"!!!!
 export const mapMat = <T,U>(f:(x:T)=>U, matrix:T[][])=>{
     return matrix.map(x=>x.map(f));
 }
@@ -23,7 +20,6 @@ export const mapMat = <T,U>(f:(x:T)=>U, matrix:T[][])=>{
 export const composeMany = function<T>(arr:((x:T)=>T)[]) {
     return arr.reduce((acc, curr) => R.compose(acc,curr), x=>x);
 }
-
 
 
 /* Question 4 */
@@ -55,11 +51,11 @@ export const maxSpeed = (pokedex: Pokemon[])=>{
    return pokedex.filter(x=>x.base.Speed === max);
 }
 ///test///
-
+/*
 let pokemon1 = {id:1, name: {english:"a",japanese:"a",chinese:"b",french:"a"},type:["Fire","B"],base:{HP:1,Attack:1,Defense:1,"Sp. Attack": 1,"Sp. Defense":1, Speed:1}}
 let pokemon2 = {id:1, name: {english:"abz",japanese:"a",chinese:"b",french:"a"},type:["A","Grass"],base:{HP:1,Attack:1,Defense:1,"Sp. Attack": 1,"Sp. Defense":1, Speed:2}}
 let pikachu = {id:1, name: {english:"abpikapika",japanese:"a",chinese:"b",french:"a"},type:["sexy","funny","Grass"],base:{HP:1,Attack:1,Defense:1,"Sp. Attack": 1,"Sp. Defense":1, Speed:2}}
-
+*/
 
 
 export const grassTypes = (pokedex: Pokemon[])=>{
@@ -78,8 +74,7 @@ console.log(grassTypes([pokemon1, pokemon2, pikachu]));
 export const uniqueTypes = (pokedex: Pokemon[])=>{
     let allTypes = R.chain(x => x.type, pokedex);
     let filteredTypes =  allTypes.reduce((acc:string[],curr:string) => 
-        acc.includes(curr)? acc.concat() : acc.concat(curr) 
-    , []);  
+        acc.includes(curr)? acc.concat() : acc.concat(curr) , []);  
     return filteredTypes.sort();
 }
 
